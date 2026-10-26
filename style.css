@@ -19,6 +19,7 @@ html, body {
   font-family: Inter, system-ui, -apple-system, sans-serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
+  touch-action: manipulation; /* pas de zoom au double-tap */
 }
 
 body { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
