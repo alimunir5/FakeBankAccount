@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FakeBank – Patrimoine & budget (démo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="logo">F</span><span>FakeBank</span></div>
+    <nav>
+      <a href="#patrimoine" data-view="patrimoine">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>
+        <span>Patrimoine</span>
+      </a>
+      <a href="#budget" data-view="budget">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg>
+        <span>Budget</span>
+      </a>
+      <a href="#depenses" data-view="depenses">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9v9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg>
+        <span>Dépenses</span>
+      </a>
+    </nav>
+    <div class="sidebar-foot">Compte de démonstration.<br>Toutes les données sont 100&nbsp;% fictives.</div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">Patrimoine</h1>
+        <p class="muted" id="page-sub"></p>
+      </div>
+      <div class="user">
+        <span class="demo-badge">Démo</span>
+        <div class="avatar" title="Camille Durand (fictif)">CD</div>
+      </div>
+    </header>
+
+    <!-- Patrimoine -->
+    <section id="view-patrimoine" class="view">
+      <div class="card hero">
+        <div class="hero-top">
+          <div>
+            <div class="label">Patrimoine net</div>
+            <div class="big" id="nw-value"></div>
+            <div class="delta" id="nw-delta"></div>
+          </div>
+          <div class="seg" id="range-seg">
+            <button data-range="30">1M</button>
+            <button data-range="182">6M</button>
+            <button data-range="365" class="active">1A</button>
+            <button data-range="1095">3A</button>
+          </div>
+        </div>
+        <div class="chart-wrap tall"><canvas id="nw-chart"></canvas></div>
+        <div class="hero-stats" id="hero-stats"></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h2>Répartition des actifs</h2>
+          <div class="donut-row">
+            <div class="chart-wrap donut"><canvas id="alloc-chart"></canvas></div>
+            <ul class="legend" id="alloc-legend"></ul>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Comptes</h2>
+          <div id="accounts"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Budget -->
+    <section id="view-budget" class="view">
+      <div class="month-nav"></div>
+      <div class="kpis" id="budget-kpis"></div>
+      <div class="grid-2">
+        <div class="card">
+          <h2>Budget par catégorie</h2>
+          <div id="budget-list"></div>
+        </div>
+        <div class="card">
+          <h2>Revenus vs dépenses · 12 mois</h2>
+          <div class="chart-wrap"><canvas id="cashflow-chart"></canvas></div>
+          <h2 class="mt">Taux d'épargne mensuel</h2>
+          <div class="chart-wrap small"><canvas id="rate-chart"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dépenses -->
+    <section id="view-depenses" class="view">
+      <div class="month-nav"></div>
+      <div class="grid-2">
+        <div class="card">
+          <h2>Répartition des dépenses</h2>
+          <div class="donut-row">
+            <div class="chart-wrap donut"><canvas id="spend-chart"></canvas></div>
+            <ul class="legend" id="spend-legend"></ul>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Dépenses cumulées · comparé au mois précédent</h2>
+          <div class="chart-wrap"><canvas id="cumul-chart"></canvas></div>
+        </div>
+      </div>
+      <div class="grid-2 wide">
+        <div class="card">
+          <h2>Transactions</h2>
+          <div class="toolbar">
+            <input type="search" id="tx-search" placeholder="Rechercher une transaction…">
+            <select id="tx-cat"></select>
+          </div>
+          <div class="tx-list" id="tx-list"></div>
+        </div>
+        <div class="card">
+          <h2>Top commerçants</h2>
+          <div id="merchants"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="note">FakeBank est un projet de démonstration : aucune donnée réelle, aucun lien avec une banque existante.</footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
