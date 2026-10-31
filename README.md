@@ -1,6 +1,6 @@
 # FakeBank – faux compte bancaire (démo)
 
-Tableau de bord de patrimoine et de budget, avec des données **100 % fictives** générées automatiquement (aucune saisie nécessaire).
+Pour montrer un tableau de bord complet de patrimoine et de budget sans exposer de vraies données bancaires, cette page web en JavaScript et Chart.js génère automatiquement des comptes et des transactions **100 % fictifs**, sans saisie ni installation.
 
 ## Fonctionnalités
 
